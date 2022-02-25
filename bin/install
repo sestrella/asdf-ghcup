@@ -1,13 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-current_script_path=${BASH_SOURCE[0]}
-plugin_dir=$(dirname "$(dirname "$current_script_path")")
-toolname=$(basename "$plugin_dir")
+main() {
+  local version="${ASDF_INSTALL_VERSION}"
+  local path="${ASDF_INSTALL_PATH}"
+  if [[ "${1}" == "cabal" ]]
+  then
+    ghcup install "${1}" "${version}" -i "${path}/bin"
+  else
+    ghcup install "${1}" "${version}" -i "${path}"
+  fi
+}
 
-if [[ "${toolname}" == "cabal" ]]
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
 then
-  ghcup install "${toolname}" "${ASDF_INSTALL_VERSION}" -i "${ASDF_INSTALL_PATH}/bin"
-else
-  ghcup install "${toolname}" "${ASDF_INSTALL_VERSION}" -i "${ASDF_INSTALL_PATH}"
+  current_script_path=${BASH_SOURCE[0]}
+  plugin_dir=$(dirname "$(dirname "$current_script_path")")
+  toolname=$(basename "$plugin_dir")
+
+  main "${toolname}"
 fi

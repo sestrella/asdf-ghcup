@@ -1,6 +1,29 @@
 setup() {
   load 'test_helper/bats-assert/load'
   load 'test_helper/bats-support/load'
+  ASDF_INSTALL_PATH=$(mktemp -dt asdf-XXXX)
+}
+
+teardown() {
+  rm -rf "${ASDF_INSTALL_PATH}"
+}
+
+@test "install - cabal" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="3.6.2.0"
+  main cabal
+  run "${ASDF_INSTALL_PATH}/bin/cabal" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
+}
+
+@test "install - ghc" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="9.2.1"
+  main ghc
+  run "${ASDF_INSTALL_PATH}/bin/ghc" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
 @test "list-all - cabal" {
