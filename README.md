@@ -48,6 +48,10 @@ asdf plugin add hls https://github.com/sestrella/asdf-ghcup.git
 asdf plugin stack hls https://github.com/sestrella/asdf-ghcup.git
 ```
 
+## References
+
+This plugin is inspired by [asdf-pyapp](https://github.com/amrox/asdf-pyapp).
+
 ## License
 
 [MIT](LICENSE)
