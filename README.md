@@ -45,3 +45,7 @@ asdf plugin add hls https://github.com/sestrella/asdf-ghcup.git
 ```
 asdf plugin stack hls https://github.com/sestrella/asdf-ghcup.git
 ```
+
+## License
+
+[MIT](LICENSE)
