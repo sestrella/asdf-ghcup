@@ -1,5 +1,9 @@
 # asdf-ghcup
 
+## Requirements
+
+- [GHCup](https://www.haskell.org/ghcup/)
+
 ## Supported Tools
 
 Here is a list of all supported tools:
