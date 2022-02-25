@@ -1,5 +1,7 @@
 # asdf-ghcup
 
+[![CI](https://github.com/sestrella/asdf-ghcup/actions/workflows/main.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/main.yml)
+
 Simple [ghcup][ghcup] wrapper.
 
 ## Requirements
