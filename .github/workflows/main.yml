@@ -8,4 +8,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - run: ./test/bats/bin/bats test
