@@ -1,9 +1,11 @@
 # asdf-ghcup
 
+Simple [ghcup][ghcup] wrapper.
+
 ## Requirements
 
 - [asdf](https://github.com/asdf-vm/asdf)
-- [ghcup](https://www.haskell.org/ghcup/)
+- [ghcup][ghcup]
 
 ## Supported Tools
 
@@ -49,3 +51,5 @@ asdf plugin stack hls https://github.com/sestrella/asdf-ghcup.git
 ## License
 
 [MIT](LICENSE)
+
+[ghcup]: https://www.haskell.org/ghcup/
