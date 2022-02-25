@@ -6,8 +6,6 @@
 
 ## Supported Tools
 
-Here is a list of all supported tools:
-
 ### [cabal](https://www.haskell.org/cabal/)
 
 > Cabal is a system for building and packaging Haskell libraries and programs.
