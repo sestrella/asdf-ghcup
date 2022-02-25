@@ -2,6 +2,7 @@
 
 ## Requirements
 
+- [asdf](https://github.com/asdf-vm/asdf)
 - [ghcup](https://www.haskell.org/ghcup/)
 
 ## Supported Tools
