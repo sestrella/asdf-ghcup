@@ -47,7 +47,7 @@ asdf plugin add hls https://github.com/sestrella/asdf-ghcup.git
 > aimed at Haskellers both new and experienced.
 
 ```
-asdf plugin stack https://github.com/sestrella/asdf-ghcup.git
+asdf plugin add stack https://github.com/sestrella/asdf-ghcup.git
 ```
 
 ## References
