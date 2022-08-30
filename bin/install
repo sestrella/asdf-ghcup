@@ -4,12 +4,12 @@ set -euo pipefail
 main() {
   local version="${ASDF_INSTALL_VERSION}"
   local path="${ASDF_INSTALL_PATH}"
-  if [[ "${1}" == "cabal" ]]
-  then
-    ghcup install "${1}" "${version}" -i "${path}/bin"
-  else
-    ghcup install "${1}" "${version}" -i "${path}"
-  fi
+  # if [[ "${1}" == "cabal" ]]
+  # then
+  # else
+  #   ghcup install "${1}" "${version}" -i "${path}"
+  # fi
+  ghcup install "${1}" "${version}" -i "${path}/bin"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
