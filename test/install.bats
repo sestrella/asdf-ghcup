@@ -10,7 +10,16 @@ teardown() {
   rm -rf "${ASDF_INSTALL_PATH}"
 }
 
-@test "cabal" {
+@test "cabal 3.6.2.0" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="3.6.2.0"
+  main cabal
+  run "${ASDF_INSTALL_PATH}/bin/cabal" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
+}
+
+@test "cabal 3.8.1.0" {
   source ./bin/install
   ASDF_INSTALL_VERSION="3.8.1.0"
   main cabal
@@ -19,7 +28,16 @@ teardown() {
   assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
-@test "install - ghc" {
+@test "ghc 9.2.4" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="9.2.4"
+  main ghc
+  run "${ASDF_INSTALL_PATH}/bin/ghc" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
+}
+
+@test "ghc 9.4.2" {
   source ./bin/install
   ASDF_INSTALL_VERSION="9.4.2"
   main ghc
@@ -28,16 +46,25 @@ teardown() {
   assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
-@test "hls" {
+@test "hls 1.6.1.0" {
   source ./bin/install
-  ASDF_INSTALL_VERSION="1.7.0.0"
+  ASDF_INSTALL_VERSION="1.6.1.0"
   main hls
-  run "${ASDF_INSTALL_PATH}/bin/hls" --version
+  run "${ASDF_INSTALL_PATH}/bin/haskell-language-server-wrapper" --version
   assert_success
   assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
-@test "stack" {
+@test "hls 1.7.0.0" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="1.7.0.0"
+  main hls
+  run "${ASDF_INSTALL_PATH}/bin/haskell-language-server-wrapper" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
+}
+
+@test "stack 2.7.5" {
   source ./bin/install
   ASDF_INSTALL_VERSION="2.7.5"
   main stack

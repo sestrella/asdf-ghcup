@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
+
+ver() {
+  echo "${1}" | awk -F . '{ printf("%02d%02d", $1,$2); }'
+}
 
 main() {
   local version="${ASDF_INSTALL_VERSION}"
   local path="${ASDF_INSTALL_PATH}"
-  # if [[ "${1}" == "cabal" ]]
-  # then
-  # else
-  #   ghcup install "${1}" "${version}" -i "${path}"
-  # fi
-  ghcup install "${1}" "${version}" -i "${path}/bin"
+  if [[ "${1}" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]
+  then
+    ghcup install "${1}" "${version}" -i "${path}"
+  else
+    ghcup install "${1}" "${version}" -i "${path}/bin"
+  fi
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
