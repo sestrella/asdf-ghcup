@@ -64,6 +64,15 @@ teardown() {
   assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
+@test "stack 2.5.1" {
+  source ./bin/install
+  ASDF_INSTALL_VERSION="2.5.1"
+  main stack
+  run "${ASDF_INSTALL_PATH}/bin/stack" --version
+  assert_success
+  assert_output --partial "${ASDF_INSTALL_VERSION}"
+}
+
 @test "stack 2.7.5" {
   source ./bin/install
   ASDF_INSTALL_VERSION="2.7.5"
