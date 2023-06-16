@@ -4,7 +4,7 @@ name: CI
 on: push
 
 jobs:
-  build:
+  bats:
     strategy:
       matrix:
         runner:
@@ -18,7 +18,22 @@ jobs:
           submodules: true
       - run: ./test/bats/bin/bats -T test/
 
+  plugin_test:
+    strategy:
+      matrix:
+        runner:
+          - macos-latest
+          - ubuntu-latest
+
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: asdf-vm/actions/plugin-test@v2
+        with:
+          plugin: ghc
+          command: ghc --version
+
   release:
+    if: false
     runs-on: ubuntu-latest
     needs: [build]
     steps:
