@@ -2,6 +2,14 @@
 
 set -euo pipefail
 
+check_ghcup() {
+  if ! command -v ghcup &> /dev/null
+  then
+    echo "ghcup not found, installing..."
+    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+  fi
+}
+
 ver() {
   echo "${1}" | awk -F . '{ printf("%02d%02d", $1,$2); }'
 }
@@ -9,6 +17,7 @@ ver() {
 main() {
   local version="${ASDF_INSTALL_VERSION}"
   local path="${ASDF_INSTALL_PATH}"
+  check_ghcup
   if [[ "${1}" == "ghc" ]] || ([[ "${1}" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]])
   then
     ghcup install "${1}" "${version}" -i "${path}"
