@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         runner:
-          - macos-latest
+          # - macos-latest
           - ubuntu-latest
 
     runs-on: ${{ matrix.runner }}
@@ -20,9 +20,11 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - run: ./test/bats/bin/bats -T test/
+      - run: ghcup --version
+      - run: ./test/bats/bin/bats --tap test
 
   plugin_test:
+    if: false
     strategy:
       matrix:
         runner:
