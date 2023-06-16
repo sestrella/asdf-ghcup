@@ -1,1 +1,3 @@
+.devenv/
+.direnv/
 node_modules/
