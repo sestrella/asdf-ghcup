@@ -21,7 +21,6 @@ jobs:
         with:
           submodules: true
       - run: ghcup nuke
-      - run: ghcup --version
       - run: ./test/bats/bin/bats --tap test
 
   plugin_test:
