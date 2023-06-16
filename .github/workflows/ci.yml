@@ -27,7 +27,7 @@ jobs:
     strategy:
       matrix:
         runner:
-          # - macos-latest
+          - macos-latest
           - ubuntu-latest
 
     runs-on: ${{ matrix.runner }}
