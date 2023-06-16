@@ -1,0 +1,4 @@
+name: sestrella/asdf-ghcup
+windows:
+  - editor: nvim .
+  - shell:
