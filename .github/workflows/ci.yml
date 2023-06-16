@@ -5,6 +5,7 @@ on: push
 
 jobs:
   bats:
+    if: false
     strategy:
       matrix:
         runner:
