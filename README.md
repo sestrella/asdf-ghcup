@@ -7,7 +7,6 @@ Simple [ghcup][ghcup] wrapper.
 ## Requirements
 
 - [asdf](https://github.com/asdf-vm/asdf)
-- [ghcup][ghcup]
 
 ## Supported Tools
 
