@@ -130,6 +130,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1687036450,
+        "narHash": "sha256-e3z/kKHnilGqXGY9SSvQluyilea4Qcta1+1G2ekXmH4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a0cd8365a8db1dfdc7d2dc1f48ee41091783f2e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-regression": {
       "locked": {
         "lastModified": 1643052045,
@@ -210,6 +226,7 @@
       "inputs": {
         "devenv": "devenv",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-master": "nixpkgs-master",
         "systems": "systems"
       }
     },

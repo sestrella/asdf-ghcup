@@ -1,6 +1,0 @@
-{
-  "name": "asdf-ghcup",
-  "devDependencies": {
-    "semantic-release": "^21.0.1"
-  }
-}
