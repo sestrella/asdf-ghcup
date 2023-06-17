@@ -18,7 +18,7 @@ main() {
   local version="${ASDF_INSTALL_VERSION}"
   local path="${ASDF_INSTALL_PATH}"
   check_ghcup
-  if [[ "${1}" == "ghc" ]] || ([[ "${1}" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]])
+  if [[ "${1}" == "ghc" ]] || { [[ "${1}" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }
   then
     ghcup install "${1}" "${version}" -i "${path}"
   else
