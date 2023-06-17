@@ -26,6 +26,8 @@
                   ];
 
                   languages.javascript.enable = true;
+
+                  pre-commit.hooks.shellcheck.enable = true;
                 }
               ];
             };
