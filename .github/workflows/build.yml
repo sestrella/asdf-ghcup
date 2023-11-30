@@ -21,10 +21,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Remove GHCup
+      - name: Remove ghcup
         run: ghcup nuke
-      - name: Check GHCup is not present
-        run: not command -v ghcup
+      - name: Check ghcup is not present
+        run: "! command -v ghcup"
         shell: bash
       - name: Run tests
         run: ./test/bats/bin/bats -T test
@@ -38,10 +38,10 @@ jobs:
       fail-fast: true
     runs-on: ${{ matrix.runner }}
     steps:
-      - name: Remove GHCup
+      - name: Remove ghcup
         run: ghcup nuke
-      - name: Check GHCup is not present
-        run: not command -v ghcup
+      - name: Check ghcup is not present
+        run: "! command -v ghcup"
         shell: bash
       - name: Test plugin
         uses: asdf-vm/actions/plugin-test@v3
