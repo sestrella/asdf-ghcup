@@ -1,6 +1,7 @@
 # asdf-ghcup
 
-[![CI](https://github.com/sestrella/asdf-ghcup/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/ci.yml)
+[![build](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml)
+[![release](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml)
 
 An asdf plugin wrapping [GHCup](https://www.haskell.org/ghcup).
 
