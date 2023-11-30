@@ -8,12 +8,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  unit:
     strategy:
       matrix:
         runner:
           - macos-latest
           - ubuntu-latest
+      fail-fast: true
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout code
@@ -23,7 +24,7 @@ jobs:
       - name: Remove ghcup
         run: ghcup nuke
       - name: Check ghcup is not present
-        run: ! command -v ghcup
+        run: "! command -v ghcup"
         shell: bash
       - name: Run tests
         run: ./test/bats/bin/bats -T test
@@ -34,12 +35,13 @@ jobs:
         runner:
           - macos-latest
           - ubuntu-latest
+      fail-fast: true
     runs-on: ${{ matrix.runner }}
     steps:
       - name: Remove ghcup
         run: ghcup nuke
       - name: Check ghcup is not present
-        run: ! command -v ghcup
+        run: "! command -v ghcup"
         shell: bash
       - name: Test plugin
         uses: asdf-vm/actions/plugin-test@v3
