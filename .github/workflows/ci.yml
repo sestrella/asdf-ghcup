@@ -24,6 +24,7 @@ jobs:
         run: ghcup nuke
       - name: Check ghcup is not present
         run: ! command -v ghcup
+        shell: bash
       - name: Run tests
         run: ./test/bats/bin/bats -T test
 
@@ -39,6 +40,7 @@ jobs:
         run: ghcup nuke
       - name: Check ghcup is not present
         run: ! command -v ghcup
+        shell: bash
       - name: Test plugin
         uses: asdf-vm/actions/plugin-test@v3
         with:
