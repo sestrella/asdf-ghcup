@@ -8,14 +8,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  unit:
+  test:
     strategy:
       matrix:
-        runner:
+        os:
           - macos-latest
           - ubuntu-latest
       fail-fast: true
-    runs-on: ${{ matrix.runner }}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,24 +26,9 @@ jobs:
       - name: Check GHCup is not present
         run: "! command -v ghcup"
         shell: bash
-      - name: Run tests
+      - name: Run unit tests
         run: ./test/bats/bin/bats -T test
-
-  integration:
-    strategy:
-      matrix:
-        runner:
-          - macos-latest
-          - ubuntu-latest
-      fail-fast: true
-    runs-on: ${{ matrix.runner }}
-    steps:
-      - name: Remove GHCup
-        run: ghcup nuke
-      - name: Check GHCup is not present
-        run: "! command -v ghcup"
-        shell: bash
-      - name: Test plugin
+      - name: Run integration tests
         uses: asdf-vm/actions/plugin-test@v3
         with:
           plugin: ghc
