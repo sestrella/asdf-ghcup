@@ -2,41 +2,31 @@
 
 [![CI](https://github.com/sestrella/asdf-ghcup/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/ci.yml)
 
-Simple [ghcup][ghcup] wrapper.
+An asdf plugin wrapping [GHCup](https://www.haskell.org/ghcup).
 
 ## Requirements
 
-- [asdf](https://github.com/asdf-vm/asdf)
+- Install [asdf](https://github.com/asdf-vm/asdf)
 
-## Supported Tools
+## Getting Started
 
-### [cabal](https://www.haskell.org/cabal/)
+At the moment, the following Haskell tools are supported by this plugin:
 
-```
-asdf plugin add cabal https://github.com/sestrella/asdf-ghcup.git
-```
+- [cabal](https://www.haskell.org/cabal)
+- [ghc](https://www.haskell.org/ghc)
+- [hls](https://github.com/haskell/haskell-language-server)
+- [stack](https://docs.haskellstack.org/en/stable/README)
 
-### [ghc](https://www.haskell.org/ghc/)
+Run the following command replacing `<tool>` with one of the tools listed
+above:
 
-```
-asdf plugin add ghc https://github.com/sestrella/asdf-ghcup.git
-```
-
-### [hls](https://github.com/haskell/haskell-language-server)
-
-```
-asdf plugin add hls https://github.com/sestrella/asdf-ghcup.git
+```sh
+asdf plugin add <tool> https://github.com/sestrella/asdf-ghcup.git
 ```
 
-### [stack](https://docs.haskellstack.org/en/stable/README/)
+## Credits
 
-```
-asdf plugin add stack https://github.com/sestrella/asdf-ghcup.git
-```
-
-## References
-
-This project was inspired by:
+This project was heavily inspired by:
 
 - [asdf-pyapp](https://github.com/amrox/asdf-pyapp)
 - [asdf-rust](https://github.com/asdf-community/asdf-rust)
@@ -44,5 +34,3 @@ This project was inspired by:
 ## License
 
 [MIT](LICENSE)
-
-[ghcup]: https://www.haskell.org/ghcup/
