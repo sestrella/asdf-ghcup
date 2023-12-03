@@ -19,15 +19,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          submodules: true
-      - name: Remove GHCup
-        run: ghcup nuke
-      - name: Check GHCup is not present
-        run: "! command -v ghcup"
-        shell: bash
-      # - name: Run unit tests
-      #   run: ./test/bats/bin/bats -T test
       - name: Run integration tests
         uses: asdf-vm/actions/plugin-test@v3
         with:
