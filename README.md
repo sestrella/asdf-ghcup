@@ -29,7 +29,9 @@ asdf plugin add <tool> https://github.com/sestrella/asdf-ghcup.git
 
 This project was heavily inspired by:
 
+- [asdf-plugin-template](https://github.com/asdf-vm/asdf-plugin-template)
 - [asdf-pyapp](https://github.com/amrox/asdf-pyapp)
+- [asdf-ruby](https://github.com/asdf-vm/asdf-ruby)
 - [asdf-rust](https://github.com/asdf-community/asdf-rust)
 
 ## License
