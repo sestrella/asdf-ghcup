@@ -16,7 +16,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: devenv
-      - run: nix-env -iA cachix -f https://cachix.org/api/v1/install
+      - run: nix-env -if https://install.devenv.sh/latest
       - run: devenv ci
 
   test:
