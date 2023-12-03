@@ -2,13 +2,8 @@
 
 set -euo pipefail
 
-check_ghcup() {
-  if ! command -v ghcup &> /dev/null
-  then
-    echo "ghcup not found, installing..."
-    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-  fi
-}
+# shellcheck source=../lib/utils.sh
+source "$(dirname "$0")/../lib/utils.sh"
 
 main() {
   check_ghcup
