@@ -3,6 +3,8 @@
 setup() {
   load 'test_helper/bats-assert/load'
   load 'test_helper/bats-support/load'
+  DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
+  PATH="$DIR/../bin:$PATH"
   ASDF_INSTALL_PATH=$(mktemp -dt asdf-XXXX)
 }
 
@@ -11,7 +13,7 @@ teardown() {
 }
 
 @test "cabal 3.6.2.0" {
-  source ./bin/install
+  install
   ASDF_INSTALL_VERSION="3.6.2.0"
   main cabal
   run "${ASDF_INSTALL_PATH}/bin/cabal" --version
