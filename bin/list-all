@@ -2,24 +2,10 @@
 
 set -euo pipefail
 
-check_ghcup() {
-  if ! command -v ghcup &> /dev/null
-  then
-    echo "ghcup not found, installing..."
-    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-  fi
-}
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+tool=$(basename "$plugin_dir")
 
-main() {
-  check_ghcup
-  ghcup list -t "${1}" -r 2>/dev/null | awk '{printf $2" "}'
-}
+source "${plugin_dir}/lib/utils.bash"
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
-then
-  current_script_path=${BASH_SOURCE[0]}
-  plugin_dir=$(dirname "$(dirname "$current_script_path")")
-  toolname=$(basename "$plugin_dir")
-
-  main  "${toolname}"
-fi
+list_all_versions "$tool"
