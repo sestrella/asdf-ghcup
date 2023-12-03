@@ -15,7 +15,7 @@ check_ghcup() {
       BOOTSTRAP_HASKELL_MINIMAL=1 \
       BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
       GHCUP_INSTALL_BASE_PREFIX="$(asdf_plugin_path)" \
-      sh
+      sh > /dev/null
   fi
 }
 
