@@ -34,7 +34,7 @@ install_version() {
 
 	ensure_ghcup
 
-	if [[ "$tool" == "ghc" ]] || { [[ "$tool" == "hls" ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }; then
+	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }; then
 		"$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "$path"
 	else
 		"$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "${path}/bin"
