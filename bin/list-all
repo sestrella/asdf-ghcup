@@ -2,20 +2,10 @@
 
 set -euo pipefail
 
-# shellcheck source=../lib/utils.sh
-source "$(dirname "$0")/../lib/utils.sh"
+current_script_path=${BASH_SOURCE[0]}
+plugin_dir=$(dirname "$(dirname "$current_script_path")")
+toolname=$(basename "$plugin_dir")
 
-main() {
-  check_ghcup
-  echo ">>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<"
-  "$(ghcup_bin_dir)/ghcup" list -t "${1}" -r | awk '{printf $2" "}'
-}
+source "${plugin_dir}/lib/utils.bash"
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
-then
-  current_script_path=${BASH_SOURCE[0]}
-  plugin_dir=$(dirname "$(dirname "$current_script_path")")
-  toolname=$(basename "$plugin_dir")
-
-  main "${1:-$toolname}"
-fi
+list_all_versions "$toolname"
