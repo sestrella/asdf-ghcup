@@ -7,6 +7,7 @@ source "$(dirname "$0")/../lib/utils.sh"
 
 main() {
   check_ghcup
+  echo ">>>>>>>>>>>>>> $1 <<<<<<<<<<<<<<"
   "$(ghcup_bin_dir)/ghcup" list -t "${1}" -r | awk '{printf $2" "}'
 }
 
