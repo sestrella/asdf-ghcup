@@ -21,6 +21,9 @@ jobs:
             command: ghc --version
           - plugin: hls
             command: haskell-language-server-wrapper --version
+          - plugin: hls
+            version: 1.6.1.0
+            command: haskell-language-server-wrapper --version
           - plugin: stack
             command: stack --version
       fail-fast: true
@@ -28,5 +31,6 @@ jobs:
     steps:
       - uses: asdf-vm/actions/plugin-test@v3
         with:
-          plugin: ${{ matrix.test.plugin }}
           command: ${{ matrix.test.command }}
+          plugin: ${{ matrix.test.plugin }}
+          version: ${{ matrix.test.version || 'latest' ||
