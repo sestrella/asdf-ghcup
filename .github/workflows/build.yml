@@ -33,4 +33,4 @@ jobs:
         with:
           command: ${{ matrix.test.command }}
           plugin: ${{ matrix.test.plugin }}
-          version: ${{ matrix.test.version || 'latest' ||
+          version: ${{ matrix.test.version || 'latest' }}
