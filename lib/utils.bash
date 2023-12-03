@@ -29,16 +29,16 @@ ver() {
 }
 
 install_version() {
-  local toolname="$1"
+  local tool="$1"
   local version="$2"
   local path="$3"
 
   check_ghcup
 
-  if [[ "$toolname" == "ghc" ]] || { [[ "$toolname" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }
+  if [[ "$tool" == "ghc" ]] || { [[ "$tool" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }
   then
-    "$(ghcup_bin_dir)/ghcup" install "$toolname" "$version" -i "$path"
+    "$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "$path"
   else
-    "$(ghcup_bin_dir)/ghcup" install "$toolname" "$version" -i "${path}/bin"
+    "$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "${path}/bin"
   fi
 }
