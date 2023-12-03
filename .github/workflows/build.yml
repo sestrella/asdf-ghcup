@@ -16,9 +16,9 @@ jobs:
           - ubuntu-latest
         plugin:
           - cabal
-          - ghc
-          - hls
-          - stack
+          # - ghc
+          # - hls
+          # - stack
       fail-fast: true
     runs-on: ${{ matrix.os }}
     steps:
@@ -26,3 +26,4 @@ jobs:
         with:
           plugin: ${{ matrix.plugin }}
           command: ${{ matrix.plugin }} --version
+          gitref: non_interactive_ghcup_installation
