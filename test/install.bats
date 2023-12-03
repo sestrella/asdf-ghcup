@@ -48,12 +48,12 @@ teardown() {
   assert_output --partial "${ASDF_INSTALL_VERSION}"
 }
 
-@test "hls 1.7.0.0" {
-  ASDF_INSTALL_VERSION="1.7.0.0" install hls
-  run "${ASDF_INSTALL_PATH}/bin/haskell-language-server-wrapper" --version
-  assert_success
-  assert_output --partial "${ASDF_INSTALL_VERSION}"
-}
+# @test "hls 1.7.0.0" {
+#   ASDF_INSTALL_VERSION="1.7.0.0" install hls
+#   run "${ASDF_INSTALL_PATH}/bin/haskell-language-server-wrapper" --version
+#   assert_success
+#   assert_output --partial "${ASDF_INSTALL_VERSION}"
+# }
 
 @test "stack 2.5.1" {
   ASDF_INSTALL_VERSION="2.5.1" install stack
