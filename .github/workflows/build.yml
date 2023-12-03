@@ -14,13 +14,15 @@ jobs:
         os:
           # - macos-latest
           - ubuntu-latest
+        plugin:
+          - cabal
+          - ghc
+          - hls
+          - stack
       fail-fast: true
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run integration tests
-        uses: asdf-vm/actions/plugin-test@v3
+      - uses: asdf-vm/actions/plugin-test@v3
         with:
-          plugin: ghc
-          command: ghc --version
+          plugin: ${{ matrix.plugin }}
+          command: ${{ matrix.plugin }} --version
