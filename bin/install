@@ -15,9 +15,9 @@ main() {
   check_ghcup
   if [[ "${1}" == "ghc" ]] || { [[ "${1}" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }
   then
-    ghcup install "${1}" "${version}" -i "${path}"
+    "$(ghcup_bin_dir)/ghcup" install "${1}" "${version}" -i "${path}"
   else
-    ghcup install "${1}" "${version}" -i "${path}/bin"
+    "$(ghcup_bin_dir)/ghcup" install "${1}" "${version}" -i "${path}/bin"
   fi
 }
 
@@ -27,5 +27,5 @@ then
   plugin_dir=$(dirname "$(dirname "$current_script_path")")
   toolname=$(basename "$plugin_dir")
 
-  main "${toolname}"
+  main "${1:-$toolname}"
 fi

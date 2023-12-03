@@ -7,7 +7,7 @@ source "$(dirname "$0")/../lib/utils.sh"
 
 main() {
   check_ghcup
-  ghcup list -t "${1}" -r 2>/dev/null | awk '{printf $2" "}'
+  "$(ghcup_bin_dir)/ghcup" list -t "${1}" -r | awk '{printf $2" "}'
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]
@@ -16,5 +16,5 @@ then
   plugin_dir=$(dirname "$(dirname "$current_script_path")")
   toolname=$(basename "$plugin_dir")
 
-  main  "${toolname}"
+  main "${1:-$toolname}"
 fi
