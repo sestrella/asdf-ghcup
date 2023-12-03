@@ -5,12 +5,6 @@ setup() {
   load 'test_helper/bats-assert/load'
   DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )"
   PATH="$DIR/../bin:$PATH"
-  export ASDF_PLUGIN_PATH=$(mktemp -dt asdf-plugin-XXXX)
-}
-
-teardown() {
-  rm -rf "$ASDF_PLUGIN_PATH"
-  unset ASDF_PLUGIN_PATH
 }
 
 @test "cabal" {

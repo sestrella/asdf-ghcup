@@ -1,5 +1,6 @@
 .devenv/
 .direnv/
+.ghcup/
 node_modules/
 
 .pre-commit-config.yaml
