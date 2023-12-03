@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 asdf_plugin_path() {
-	echo "$(dirname "$(dirname "$0")")"
+	dirname "$(dirname "$0")"
 }
 
 ghcup_bin_dir() {
