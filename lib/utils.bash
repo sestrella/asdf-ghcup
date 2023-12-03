@@ -8,7 +8,7 @@ ghcup_bin_dir() {
   echo "$(asdf_plugin_path)/.ghcup/bin"
 }
 
-check_ghcup() {
+ensure_ghcup() {
   if ! test -f "$(ghcup_bin_dir)/ghcup"
   then
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | env \
@@ -20,7 +20,7 @@ check_ghcup() {
 }
 
 list_all_versions() {
-  check_ghcup
+  ensure_ghcup
   "$(ghcup_bin_dir)/ghcup" list -t "$1" -r | awk '{printf $2" "}'
 }
 
@@ -33,7 +33,7 @@ install_version() {
   local version="$2"
   local path="$3"
 
-  check_ghcup
+  ensure_ghcup
 
   if [[ "$tool" == "ghc" ]] || { [[ "$tool" == "hls"  ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }
   then
