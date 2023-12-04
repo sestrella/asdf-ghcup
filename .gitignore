@@ -3,4 +3,5 @@
 .ghcup/
 node_modules/
 
+.devenv.flake.nix
 .pre-commit-config.yaml
