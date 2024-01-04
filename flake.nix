@@ -30,7 +30,9 @@
               modules = [
                 {
                   # https://devenv.sh/reference/options/
-                  languages.javascript.enable = true;
+                  packages = [
+                    pkgs.semantic-release
+                  ];
 
                   pre-commit.hooks = {
                     shellcheck.enable = true;
