@@ -12,11 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-          cache: npm
-      - run: npm ci
-      - run: npx semantic-release
+      - uses: cachix/install-nix-action@v24
+      - run: nix develop --impure -c semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
