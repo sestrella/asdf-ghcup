@@ -22,7 +22,7 @@ Run the following command replacing `<tool>` with one of the tools listed
 above:
 
 ```sh
-asdf plugin add <tool> https://github.com/sestrella/asdf-ghcup.git
+asdf plugin add <tool>
 ```
 
 ## Credits
