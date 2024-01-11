@@ -11,7 +11,7 @@ An asdf plugin wrapping [GHCup](https://www.haskell.org/ghcup).
 
 ## Getting Started
 
-At the moment, the following Haskell tools are supported by this plugin:
+The following Haskell tools are supported by this plugin:
 
 - [cabal](https://www.haskell.org/cabal)
 - [ghc](https://www.haskell.org/ghc)
