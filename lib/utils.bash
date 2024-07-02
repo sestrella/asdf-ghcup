@@ -20,7 +20,7 @@ ensure_ghcup() {
 
 list_all_versions() {
 	ensure_ghcup
-	"$(ghcup_bin_dir)/ghcup" list -t "$1" -r | awk '{printf $2" "}'
+	GHCUP_INSTALL_BASE_PREFIX="$(asdf_plugin_path)" "$(ghcup_bin_dir)/ghcup" list -t "$1" -r | awk '{printf $2" "}'
 }
 
 ver() {
