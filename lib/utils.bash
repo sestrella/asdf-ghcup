@@ -24,7 +24,7 @@ ghcup_wrapper() {
 }
 
 list_all_versions() {
-  ghcup_wrapper list -t "$1" -r | awk '{printf $2" "}'
+	ghcup_wrapper list -t "$1" -r | awk '{printf $2" "}'
 }
 
 ver() {
