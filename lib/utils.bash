@@ -36,7 +36,9 @@ install_version() {
 	local version="$2"
 	local path="$3"
 
-	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }; then
+	local version_prefix=$(echo "$version" | cut -d '.' -f 1,2)
+
+	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
 		ghcup_wrapper install "$tool" "$version" -i "$path"
 	else
 		ghcup_wrapper install "$tool" "$version" -i "${path}/bin"
