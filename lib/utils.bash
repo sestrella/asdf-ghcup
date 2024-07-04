@@ -18,25 +18,26 @@ ensure_ghcup() {
 	fi
 }
 
-list_all_versions() {
+ghcup_wrapper() {
 	ensure_ghcup
-	"$(ghcup_bin_dir)/ghcup" list -t "$1" -r | awk '{printf $2" "}'
+	GHCUP_INSTALL_BASE_PREFIX="$(asdf_plugin_path)" "$(ghcup_bin_dir)/ghcup" "$@"
 }
 
-ver() {
-	echo "$1" | awk -F . '{ printf("%02d%02d", $1,$2); }'
+list_all_versions() {
+	ghcup_wrapper list -t "$1" -r | awk '{printf $2 " "}'
 }
 
 install_version() {
-	local tool="$1"
-	local version="$2"
-	local path="$3"
+	local tool version path version_prefix
 
-	ensure_ghcup
+	tool="$1"
+	version="$2"
+	path="$3"
+	version_prefix=$(echo "$version" | awk -F '.' '{print $1 "." $2}')
 
-	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(ver "$version") -ge $(ver "1.7") ]]; }; then
-		GHCUP_INSTALL_BASE_PREFIX="$(asdf_plugin_path)" "$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "$path"
+	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
+		ghcup_wrapper install "$tool" "$version" -i "$path"
 	else
-		GHCUP_INSTALL_BASE_PREFIX="$(asdf_plugin_path)" "$(ghcup_bin_dir)/ghcup" install "$tool" "$version" -i "${path}/bin"
+		ghcup_wrapper install "$tool" "$version" -i "${path}/bin"
 	fi
 }
