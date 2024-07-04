@@ -29,10 +29,10 @@ jobs:
             version: latest
             command: ghc --version
           - plugin: hls
-            version: 1.6.1.0
+            version: latest
             command: haskell-language-server-wrapper --version
           - plugin: hls
-            version: latest
+            version: 1.6.1.0
             command: haskell-language-server-wrapper --version
           - plugin: stack
             version: latest

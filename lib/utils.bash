@@ -32,6 +32,7 @@ install_version() {
 	local version="$2"
 	local path="$3"
 
+	# shellcheck disable=SC2155
 	local version_prefix=$(echo "$version" | awk -F. '{print $1 "." $2}')
 
 	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
