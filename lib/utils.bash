@@ -24,11 +24,7 @@ ghcup_wrapper() {
 }
 
 list_all_versions() {
-	ghcup_wrapper list -t "$1" -r | awk '{printf $2" "}'
-}
-
-ver() {
-	echo "$1" | awk -F . '{ printf("%02d%02d", $1,$2); }'
+	ghcup_wrapper list -t "$1" -r | awk '{printf $2 " "}'
 }
 
 install_version() {
@@ -36,7 +32,7 @@ install_version() {
 	local version="$2"
 	local path="$3"
 
-	local version_prefix=$(echo "$version" | cut -d '.' -f 1,2)
+	local version_prefix=$(echo "$version" | awk -F. '{print $1 "." $2}')
 
 	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
 		ghcup_wrapper install "$tool" "$version" -i "$path"
