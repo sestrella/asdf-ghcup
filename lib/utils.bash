@@ -28,12 +28,12 @@ list_all_versions() {
 }
 
 install_version() {
-	local tool="$1"
-	local version="$2"
-	local path="$3"
+	local tool version path version_prefix
 
-	# shellcheck disable=SC2155
-	local version_prefix=$(echo "$version" | awk -F. '{print $1 "." $2}')
+	tool="$1"
+	version="$2"
+	path="$3"
+	version_prefix=$(echo "$version" | awk -F '.' '{print $1 "." $2}')
 
 	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
 		ghcup_wrapper install "$tool" "$version" -i "$path"
