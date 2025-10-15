@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   check:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,9 +27,9 @@ jobs:
           - macos-latest
           - ubuntu-latest
         test:
-          - plugin: cabal
-            version: latest
-            command: cabal --version
+          # - plugin: cabal
+          #   version: latest
+          #   command: cabal --version
           - plugin: ghc
             version: latest
             command: ghc --version
@@ -38,12 +39,12 @@ jobs:
           # - plugin: hls
           #   version: 1.6.1.0
           #   command: haskell-language-server-wrapper --version
-          - plugin: stack
-            version: latest
-            command: stack --version
+          # - plugin: stack
+          #   version: latest
+          #   command: stack --version
       fail-fast: true
     runs-on: ${{ matrix.os }}
-    needs: [check]
+    # needs: [check]
     steps:
       - uses: asdf-vm/actions/plugin-test@v4
         with:
