@@ -51,3 +51,4 @@ jobs:
           plugin: ${{ matrix.test.plugin }}
           version: ${{ matrix.test.version }}
           command: ${{ matrix.test.command }}
+          gitref: ${{ github.ref_name }}
