@@ -48,7 +48,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          path: ~/.asdf/plugins/ghc
+          path: /home/runner/.asdf/plugins/ghc
       - uses: asdf-vm/actions/install@v4
       - run: asdf list all ghc
       # - uses: asdf-vm/actions/plugin-test@v4
