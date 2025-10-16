@@ -26,13 +26,13 @@ jobs:
         os:
           # - macos-latest
           - ubuntu-latest
-        # test:
+        test:
           # - plugin: cabal
           #   version: latest
           #   command: cabal --version
-          # - plugin: ghc
-          #   version: latest
-          #   command: ghc --version
+          - plugin: ghc
+            version: latest
+            command: ghc --version
           # - plugin: hls
           #   version: latest
           #   command: haskell-language-server-wrapper --version
