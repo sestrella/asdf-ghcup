@@ -47,6 +47,9 @@ jobs:
     # needs: [check]
     steps:
       - uses: actions/checkout@v5
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential curl libffi-dev libffi8 libgmp-dev libgmp10 libncurses-dev pkg-config+
       - run: mkdir -p ~/.asdf/installs/ghc/9.12.2
       - run: ./bin/install ghc
         env:
