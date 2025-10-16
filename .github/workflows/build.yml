@@ -47,8 +47,9 @@ jobs:
     # needs: [check]
     steps:
       - uses: actions/checkout@v5
-        with:
-          path: /home/runner/.asdf/plugins/ghc
+      - run: mkdir -p ~/.asdf/plugins
+      - run: ln -s ${{ github.workspace }} ~/.asdf/plugins/ghc
+      - run: touch .tool-versions
       - uses: asdf-vm/actions/install@v4
       - run: asdf list all ghc
       # - uses: asdf-vm/actions/plugin-test@v4
