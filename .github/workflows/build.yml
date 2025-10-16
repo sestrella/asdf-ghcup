@@ -46,20 +46,22 @@ jobs:
     runs-on: ${{ matrix.os }}
     # needs: [check]
     steps:
-      - uses: actions/checkout@v5
-      - run: mkdir -p ~/.asdf/plugins
-      - run: ln -s ${{ github.workspace }} ~/.asdf/plugins/ghc
-      - run: touch .tool-versions
-      - uses: asdf-vm/actions/install@v4
-      - run: asdf list all ghc
+      # - uses: actions/checkout@v5
+      # - run: mkdir -p ~/.asdf/plugins
+      # - run: ln -s ${{ github.workspace }} ~/.asdf/plugins/ghc
+      # - run: touch .tool-versions
+      # - uses: asdf-vm/actions/install@v4
+      # - run: asdf list all ghc
       # - run: |
       #     asdf plugin test ghc https://github.com/sestrella/asdf-ghcup \
       #       --asdf-tool-version 9.12.2 \
       #       --asdf-plugin-gitref update_asdf_action \
       #       ghc --version
-      # - uses: asdf-vm/actions/plugin-test@v4
-      #   with:
-      #     plugin: ${{ matrix.test.plugin }}
-      #     version: ${{ matrix.test.version }}
-      #     command: ${{ matrix.test.command }}
+      - uses: asdf-vm/actions/plugin-test@v4
+        with:
+          plugin: ghc
+          command: ghc --version
+          # plugin: ${{ matrix.test.plugin }}
+          # version: ${{ matrix.test.version }}
+          # command: ${{ matrix.test.command }}
           # gitref: update_asdf_action
