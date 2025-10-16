@@ -64,4 +64,4 @@ jobs:
           # plugin: ${{ matrix.test.plugin }}
           # version: ${{ matrix.test.version }}
           # command: ${{ matrix.test.command }}
-          # gitref: update_asdf_action
+          gitref: update_asdf_action
