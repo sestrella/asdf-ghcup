@@ -47,10 +47,11 @@ jobs:
     # needs: [check]
     steps:
       - uses: actions/checkout@v5
+      - run: mkdir -p ~/.asdf/installs/ghc/9.12.2
       - run: ./bin/install ghc
         env:
           ASDF_INSTALL_VERSION: 9.12.2
-          ASDF_INSTALL_PATH: /home/runner/.asdf/installs/asdf/ghc/9.12.2
+          ASDF_INSTALL_PATH: ~/.asdf/installs/ghc/9.12.2
         continue-on-error: true
       - run: .ghcup/bin/ghcup --version
       # - run: mkdir -p ~/.asdf/plugins
