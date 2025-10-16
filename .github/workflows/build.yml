@@ -46,6 +46,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     # needs: [check]
     steps:
+      - uses: actions/checkout@v5
       - run: touch .tool-versions
       - uses: asdf-vm/actions/install@v4
       - run: asdf plugin test ghc https://github.com/sestrella/asdf-ghcup --asdf-plugin-gitref ${{ github.sha }} ghc --version
