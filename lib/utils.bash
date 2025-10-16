@@ -11,12 +11,13 @@ ensure_ghcup() {
 			BOOTSTRAP_HASKELL_NO_UPGRADE=1 \
 			GHCUP_INSTALL_BASE_PREFIX="${asdf_plugin_path}" \
 			sh >/dev/null
+		tree -a "${asdf_plugin_path}"
 	fi
 }
 
 ghcup_wrapper() {
 	ensure_ghcup
-	env GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" "${ghcup_bin_dir}/ghcup" "$@"
+	GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" "${ghcup_bin_dir}/ghcup" "$@"
 }
 
 list_all_versions() {
