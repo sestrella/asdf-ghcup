@@ -2,6 +2,7 @@
 
 {
   packages = [
+    pkgs.asdf-vm
     pkgs.semantic-release
   ];
 
