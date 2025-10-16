@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+set +x
 set -euo pipefail
 
 current_script_path=${BASH_SOURCE[0]}
 plugin_dir=$(dirname "$(dirname "$current_script_path")")
-tool=$(basename "$plugin_dir" | cut -d'-' -f3)
+tool="$1"
+# tool=$(basename "$plugin_dir" | cut -d'-' -f3)
 
 # shellcheck source=./lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"

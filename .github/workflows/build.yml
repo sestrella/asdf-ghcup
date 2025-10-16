@@ -26,13 +26,13 @@ jobs:
         os:
           # - macos-latest
           - ubuntu-latest
-        test:
+        # test:
           # - plugin: cabal
           #   version: latest
           #   command: cabal --version
-          - plugin: ghc
-            version: latest
-            command: ghc --version
+          # - plugin: ghc
+          #   version: latest
+          #   command: ghc --version
           # - plugin: hls
           #   version: latest
           #   command: haskell-language-server-wrapper --version
@@ -46,7 +46,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     # needs: [check]
     steps:
-      # - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
+      - run: ./bin/install ghc
+        env:
+          ASDF_INSTALL_VERSION: 9.12.2
+          ASDF_INSTALL_PATH: ~/.asdf/installs/asdf/ghc/9.12.2
       # - run: mkdir -p ~/.asdf/plugins
       # - run: ln -s ${{ github.workspace }} ~/.asdf/plugins/ghc
       # - run: touch .tool-versions
@@ -57,11 +61,11 @@ jobs:
       #       --asdf-tool-version 9.12.2 \
       #       --asdf-plugin-gitref update_asdf_action \
       #       ghc --version
-      - uses: asdf-vm/actions/plugin-test@v4
-        with:
-          plugin: ${{ matrix.test.plugin }}
-          version: ${{ matrix.test.version }}
-          command: ${{ matrix.test.command }}
-          gitref: update_asdf_action
-        continue-on-error: true
-      - run: tree ~/.asdf/installs/asdf-test-ghc
+      # - uses: asdf-vm/actions/plugin-test@v4
+      #   with:
+      #     plugin: ${{ matrix.test.plugin }}
+      #     version: ${{ matrix.test.version }}
+      #     command: ${{ matrix.test.command }}
+      #     gitref: update_asdf_action
+      #   continue-on-error: true
+      # - run: tree ~/.asdf/installs/asdf-test-ghc
