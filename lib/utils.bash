@@ -23,16 +23,16 @@ list_all_versions() {
 }
 
 install_version() {
-	local tool version path version_prefix
+	local tool version path # version_prefix
 
 	tool="$1"
 	version="$2"
 	path="$3"
-	version_prefix=$(echo "$version" | awk -F '.' '{print $1 "." $2}')
+	# version_prefix=$(echo "$version" | awk -F '.' '{print $1 "." $2}')
 
-	if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
-		ghcup_wrapper install "$tool" "$version" -i "$path"
-	else
-		ghcup_wrapper install "$tool" "$version" -i "${path}/bin"
-	fi
+	# if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
+	# 	ghcup_wrapper install "$tool" "$version" -i "$path"
+	# else
+	ghcup_wrapper install "$tool" "$version" -i "${path}/bin"
+	# fi
 }
