@@ -5,7 +5,6 @@ ghcup_bin_dir="${asdf_plugin_path}/.ghcup/bin"
 
 ensure_ghcup() {
 	if ! test -f "${ghcup_bin_dir}/ghcup"; then
-		echo "Installing GHCUP"
 		curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | env \
 			BOOTSTRAP_HASKELL_MINIMAL=1 \
 			BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
@@ -17,7 +16,7 @@ ensure_ghcup() {
 
 ghcup_wrapper() {
 	ensure_ghcup
-	GHCUP_INSTALL_BASE_PREFIX="${asdf_plugin_path}" "${ghcup_bin_dir}/ghcup" "$@"
+	env GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" "${ghcup_bin_dir}/ghcup" "$@"
 }
 
 list_all_versions() {
