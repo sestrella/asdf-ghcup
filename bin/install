@@ -9,7 +9,7 @@ default_tool=$(basename "$plugin_dir")
 tool="${1:-$default_tool}"
 
 version="${ASDF_INSTALL_VERSION:-$2}"
-path="${ASDF_INSTALL_VERSION:-$3}"
+path="${ASDF_INSTALL_PATH:-$3}"
 
 # shellcheck disable=SC1091
 source "${plugin_dir}/lib/utils.bash"
