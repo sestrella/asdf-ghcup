@@ -20,6 +20,7 @@
       enable = true;
       entry = lib.getExe pkgs.gitleaks;
       args = [ "git" ];
+      always_run = true;
       stages = [ "post-commit" ];
     };
     shellcheck.enable = true;
