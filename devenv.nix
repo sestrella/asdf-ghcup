@@ -15,7 +15,11 @@
       enable = true;
       entry = lib.getExe pkgs.autocommitmsg;
       stages = [ "prepare-commit-msg" ];
-      verbose = true;
+    };
+    gitleaks = {
+      enable = true;
+      entry = lib.getExe pkgs.gitleaks;
+      stages = [ "post-commit" ];
     };
     shellcheck.enable = true;
     shfmt.enable = true;
