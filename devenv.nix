@@ -8,6 +8,8 @@
 {
   env.GEMINI_API_KEY = config.secretspec.secrets.GEMINI_API_KEY or "";
 
+  packages = [ pkgs.asdf-vm ];
+
   git-hooks.hooks = {
     autocommitmsg = {
       enable = true;
