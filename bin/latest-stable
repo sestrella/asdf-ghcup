@@ -11,4 +11,4 @@ tool="${1:-$default_tool}"
 # shellcheck source=./lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"
 
-list_all_versions "$tool" | awk '{print $2}' | tr '\n' ' '
+list_all_versions "$tool" | grep 'recommended' | awk '{print $2}'

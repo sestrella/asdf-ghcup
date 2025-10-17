@@ -1,42 +1,40 @@
 #!/usr/bin/env bash
 
-asdf_plugin_path=$(dirname "$(dirname "$0")")
-ghcup_bin_dir="${asdf_plugin_path}/.ghcup/bin"
+asdf_plugin_path=$(realpath "$(dirname "$(dirname "$0")")")
 
-ensure_ghcup() {
-	if ! test -f "${ghcup_bin_dir}/ghcup"; then
-		curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | env \
-			GHCUP_INSTALL_BASE_PREFIX="${asdf_plugin_path}" \
-			sh
-		# curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | env \
-		# 	BOOTSTRAP_HASKELL_MINIMAL=1 \
-		# 	BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
-		# 	BOOTSTRAP_HASKELL_NO_UPGRADE=1 \
-		# 	sh >/dev/null
-		tree -a "${asdf_plugin_path}"
+install_ghcup() {
+	local path=".ghcup/bin/ghcup"
+
+	if [ ! -x "$path" ]; then
+		echo "Installing ghcup at $asdf_plugin_path" >&2
+		curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org |
+			BOOTSTRAP_HASKELL_MINIMAL=1 \
+				BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
+				GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" \
+				sh >&2
 	fi
+	echo "$path"
 }
 
 ghcup_wrapper() {
-	ensure_ghcup
-	GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" "${ghcup_bin_dir}/ghcup" "$@"
+	if command -v ghcup; then
+		echo "Using ghcup found at $(which ghcup)" >&2
+		ghcup "$@"
+	else
+		GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" "$(install_ghcup)" "$@"
+	fi
 }
 
 list_all_versions() {
-	ghcup_wrapper list -t "$1" -r | awk '{printf $2 " "}'
+	local tool="$1"
+
+	ghcup_wrapper list -t "$tool" -r
 }
 
 install_version() {
-	local tool version path # version_prefix
+	local tool="$1"
+	local version="$2"
+	local path="$3"
 
-	tool="$1"
-	version="$2"
-	path="$3"
-	# version_prefix=$(echo "$version" | awk -F '.' '{print $1 "." $2}')
-
-	# if [[ $tool == "ghc" ]] || { [[ $tool == "hls" ]] && [[ $(echo "$version_prefix >= 1.7" | bc) -eq 1 ]]; }; then
-	# 	ghcup_wrapper install "$tool" "$version" -i "$path"
-	# else
-	ghcup_wrapper install "$tool" "$version" -i "${path}/bin"
-	# fi
+	ghcup_wrapper install "$tool" "$version" -i "$path"
 }

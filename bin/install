@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
-set -x
 set -euo pipefail
 
 current_script_path=${BASH_SOURCE[0]}
 plugin_dir=$(dirname "$(dirname "$current_script_path")")
-tool="$1"
-# tool=$(basename "$plugin_dir" | cut -d'-' -f3)
+
+default_tool=$(basename "$plugin_dir")
+tool="${1:-$default_tool}"
+
+version="${ASDF_INSTALL_VERSION:-$2}"
+path="${ASDF_INSTALL_VERSION:-$3}"
 
 # shellcheck source=./lib/utils.bash
 source "${plugin_dir}/lib/utils.bash"
 
-install_version "$tool" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
+install_version "$tool" "$version" "$path"

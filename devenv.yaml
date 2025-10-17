@@ -1,4 +1,12 @@
 # yaml-language-server: $schema=https://devenv.sh/devenv.schema.json
 inputs:
+  autocommitmsg:
+    url: github:sestrella/autocommitmsg
+    overlays: [default]
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
+
+secretspec:
+  enable: true
+  provider: keyring
+  profile: development
