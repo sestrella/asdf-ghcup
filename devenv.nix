@@ -19,6 +19,7 @@
     gitleaks = {
       enable = true;
       entry = lib.getExe pkgs.gitleaks;
+      args = [ "git" ];
       stages = [ "post-commit" ];
     };
     shellcheck.enable = true;
