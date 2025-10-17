@@ -11,7 +11,7 @@ tool="${1:-$default_tool}"
 version="${ASDF_INSTALL_VERSION:-$2}"
 path="${ASDF_INSTALL_VERSION:-$3}"
 
-# shellcheck source=./lib/utils.bash
+# shellcheck disable=SC1091
 source "${plugin_dir}/lib/utils.bash"
 
 install_version "$tool" "$version" "$path"

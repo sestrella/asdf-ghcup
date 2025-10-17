@@ -8,7 +8,7 @@ plugin_dir=$(dirname "$(dirname "$current_script_path")")
 default_tool=$(basename "$plugin_dir")
 tool="${1:-$default_tool}"
 
-# shellcheck source=./lib/utils.bash
+# shellcheck disable=SC1091
 source "${plugin_dir}/lib/utils.bash"
 
 list_all_versions "$tool" | grep 'recommended' | awk '{print $2}'
