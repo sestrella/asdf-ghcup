@@ -3,7 +3,7 @@
 asdf_plugin_path=$(realpath "$(dirname "$(dirname "$0")")")
 
 install_ghcup() {
-	local path=".ghcup/bin/ghcup"
+	local path="${asdf_plugin_path}/.ghcup/bin/ghcup"
 
 	if [[ ! -x $path ]]; then
 		echo "Installing ghcup at $asdf_plugin_path" >&2
@@ -11,9 +11,9 @@ install_ghcup() {
 			BOOTSTRAP_HASKELL_MINIMAL=1 \
 				BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
 				GHCUP_INSTALL_BASE_PREFIX="$asdf_plugin_path" \
-				GHCUP_USE_XDG_DIRS=0 \
 				sh >&2
 	fi
+
 	echo "$path"
 }
 
@@ -38,6 +38,7 @@ install_version() {
 	local path="$3"
 
 	ghcup_wrapper install "$tool" "$version" -i "$path"
+
 	if [[ ! -d "${path}/bin" ]]; then
 		echo "Moving $tool binaries from $path to ${path}/bin" >&2
 		mkdir "${path}/bin"
