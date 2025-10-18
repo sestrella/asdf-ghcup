@@ -32,6 +32,13 @@ list_all_versions() {
 	ghcup_wrapper list -t "$tool" -r
 }
 
+download_version() {
+	local tool="$1"
+	local version="$2"
+
+	ghcup_wrapper prefetch "$tool" "$version"
+}
+
 install_version() {
 	local tool="$1"
 	local version="$2"
