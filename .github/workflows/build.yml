@@ -45,4 +45,5 @@ jobs:
         with:
           plugin: ${{ matrix.test.plugin }}
           command: ${{ matrix.test.command }}
-          gitref: ${{ github.ref_name }}
+          # gitref: ${{ github.ref_name }}
+          gitref: update_asdf_action
