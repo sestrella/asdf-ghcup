@@ -19,6 +19,8 @@ jobs:
       - uses: cachix/install-nix-action@v27
       - run: nix profile add nixpkgs#devenv
       - run: devenv test
+        env:
+          SECRETSPEC_PROVIDER: env
 
   test:
     strategy:
