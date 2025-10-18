@@ -3,8 +3,6 @@ inputs:
   autocommitmsg:
     url: github:sestrella/autocommitmsg
     overlays: [default]
-  git-hooks:
-    url: github:sestrella/git-hooks.nix/add_gitleaks_hook
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
 

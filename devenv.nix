@@ -16,7 +16,13 @@
       entry = lib.getExe pkgs.autocommitmsg;
       stages = [ "prepare-commit-msg" ];
     };
-    gitleaks.enable = true;
+    gitleaks = {
+      enable = true;
+      entry = lib.getExe pkgs.gitleaks;
+      args = [ "git" ];
+      always_run = true;
+      stages = [ "post-commit" ];
+    };
     shellcheck.enable = true;
     shfmt.enable = true;
   };
