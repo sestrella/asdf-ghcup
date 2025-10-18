@@ -72,19 +72,18 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1760663237,
-        "owner": "cachix",
+        "lastModified": 1760739870,
+        "owner": "sestrella",
         "repo": "git-hooks.nix",
-        "rev": "ca5b894d3e3e151ffc1db040b6ce4dcc75d31c37",
+        "rev": "477000ba2023e305c4a61cd20e26e51af24d2263",
         "type": "github"
       },
       "original": {
-        "owner": "cachix",
+        "owner": "sestrella",
+        "ref": "add_gitleaks_hook",
         "repo": "git-hooks.nix",
         "type": "github"
       }
@@ -161,6 +160,21 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1760596604,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3cbe716e2346710d6e1f7c559363d14e11c32a43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1758532697,
         "owner": "cachix",
         "repo": "devenv-nixpkgs",
@@ -179,7 +193,7 @@
         "autocommitmsg": "autocommitmsg",
         "devenv": "devenv",
         "git-hooks": "git-hooks",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": [
           "git-hooks"
         ]
