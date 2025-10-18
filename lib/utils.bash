@@ -18,7 +18,7 @@ install_ghcup() {
 }
 
 ghcup_wrapper() {
-	if command -v ghcup; then
+	if command -v ghcup >/dev/null; then
 		echo "Using ghcup found at $(which ghcup)" >&2
 		ghcup "$@"
 	else
