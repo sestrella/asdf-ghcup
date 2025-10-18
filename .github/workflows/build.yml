@@ -1,11 +1,11 @@
 ---
 name: build
 
-on: push
-  # push:
-  #   branches: [main]
-  # pull_request:
-  #   branches: [main]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 concurrency:
   group: build-${{ github.ref }}
@@ -13,65 +13,38 @@ concurrency:
 
 jobs:
   check:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v27
-      - run: nix develop --impure -c pre-commit run -a
+      - run: nix profile add nixpkgs#devenv
+      - run: devenv test
 
   test:
     strategy:
       matrix:
         os:
-          # - macos-latest
+          - macos-latest
           - ubuntu-latest
-        # test:
-          # - plugin: cabal
-          #   version: latest
-          #   command: cabal --version
-          # - plugin: ghc
-          #   version: latest
-          #   command: ghc --version
-          # - plugin: hls
-          #   version: latest
-          #   command: haskell-language-server-wrapper --version
-          # - plugin: hls
-          #   version: 1.6.1.0
-          #   command: haskell-language-server-wrapper --version
-          # - plugin: stack
-          #   version: latest
-          #   command: stack --version
+        test:
+          - plugin: cabal
+            version: latest
+            command: cabal --version
+          - plugin: ghc
+            version: latest
+            command: ghc --version
+          - plugin: hls
+            version: latest
+            command: haskell-language-server-wrapper --version
+          - plugin: stack
+            version: latest
+            command: stack --version
       fail-fast: true
     runs-on: ${{ matrix.os }}
-    # needs: [check]
+    needs: [check]
     steps:
-      - uses: actions/checkout@v5
-      - run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential curl libffi-dev libffi8ubuntu1 libgmp-dev libgmp10 libncurses-dev
-      - run: mkdir -p ~/.asdf/installs/ghc/9.12.2
-      - run: ./bin/install ghc
-        env:
-          ASDF_INSTALL_VERSION: 9.12.2
-          ASDF_INSTALL_PATH: ~/.asdf/installs/ghc/9.12.2
-        continue-on-error: true
-      - run: .ghcup/bin/ghcup --version
-      # - run: mkdir -p ~/.asdf/plugins
-      # - run: ln -s ${{ github.workspace }} ~/.asdf/plugins/ghc
-      # - run: touch .tool-versions
-      # - uses: asdf-vm/actions/install@v4
-      # - run: asdf list all ghc
-      # - run: |
-      #     asdf plugin test ghc https://github.com/sestrella/asdf-ghcup \
-      #       --asdf-tool-version 9.12.2 \
-      #       --asdf-plugin-gitref update_asdf_action \
-      #       ghc --version
-      # - uses: asdf-vm/actions/plugin-test@v4
-      #   with:
-      #     plugin: ${{ matrix.test.plugin }}
-      #     version: ${{ matrix.test.version }}
-      #     command: ${{ matrix.test.command }}
-      #     gitref: update_asdf_action
-      #   continue-on-error: true
-      # - run: tree ~/.asdf/installs/asdf-test-ghc
+      - uses: asdf-vm/actions/plugin-test@v4
+        with:
+          plugin: ${{ matrix.test.plugin }}
+          version: ${{ matrix.test.version }}
+          command: ${{ matrix.test.command }}
