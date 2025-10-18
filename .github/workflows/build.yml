@@ -30,16 +30,12 @@ jobs:
           - ubuntu-latest
         test:
           - plugin: cabal
-            version: latest
             command: cabal --version
           - plugin: ghc
-            version: latest
             command: ghc --version
           - plugin: hls
-            version: latest
             command: haskell-language-server-wrapper --version
           - plugin: stack
-            version: latest
             command: stack --version
       fail-fast: true
     runs-on: ${{ matrix.os }}
@@ -48,5 +44,4 @@ jobs:
       - uses: asdf-vm/actions/plugin-test@v4
         with:
           plugin: ${{ matrix.test.plugin }}
-          version: ${{ matrix.test.version }}
           command: ${{ matrix.test.command }}
