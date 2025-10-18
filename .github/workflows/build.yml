@@ -37,15 +37,10 @@ jobs:
             command: haskell-language-server-wrapper --version
           - plugin: stack
             command: stack --version
-        ghcup_nuke:
-          - true
-          - false
       fail-fast: true
     runs-on: ${{ matrix.os }}
     needs: [check]
     steps:
-      - run: ghcup nuke
-        if: ${{ matrix.ghcup_nuke }}
       - uses: asdf-vm/actions/plugin-test@v4
         with:
           plugin: ${{ matrix.test.plugin }}
