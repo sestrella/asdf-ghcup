@@ -46,3 +46,5 @@ jobs:
           plugin: ${{ matrix.test.plugin }}
           command: ${{ matrix.test.command }}
           gitref: ${{ github.head_ref || github.ref_name }}
+        env:
+          GHCUP_USE_XDG_DIRS: 1
