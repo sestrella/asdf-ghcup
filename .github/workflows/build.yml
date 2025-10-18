@@ -15,9 +15,12 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v27
-      - run: nix develop --impure -c pre-commit run -a
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix profile add nixpkgs#devenv
+      - run: devenv test
+        env:
+          SECRETSPEC_PROVIDER: env
 
   test:
     strategy:
@@ -27,26 +30,21 @@ jobs:
           - ubuntu-latest
         test:
           - plugin: cabal
-            version: latest
             command: cabal --version
           - plugin: ghc
-            version: latest
             command: ghc --version
           - plugin: hls
-            version: latest
-            command: haskell-language-server-wrapper --version
-          - plugin: hls
-            version: 1.6.1.0
             command: haskell-language-server-wrapper --version
           - plugin: stack
-            version: latest
             command: stack --version
       fail-fast: true
     runs-on: ${{ matrix.os }}
     needs: [check]
     steps:
-      - uses: asdf-vm/actions/plugin-test@v3
+      - uses: asdf-vm/actions/plugin-test@v4
         with:
           plugin: ${{ matrix.test.plugin }}
-          version: ${{ matrix.test.version }}
           command: ${{ matrix.test.command }}
+          gitref: ${{ github.head_ref || github.ref_name }}
+        env:
+          GHCUP_USE_XDG_DIRS: 1

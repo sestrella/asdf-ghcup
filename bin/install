@@ -4,8 +4,15 @@ set -euo pipefail
 
 current_script_path=${BASH_SOURCE[0]}
 plugin_dir=$(dirname "$(dirname "$current_script_path")")
-tool=$(basename "$plugin_dir")
 
+default_tool=$(basename "$plugin_dir")
+tool="${1:-$default_tool}"
+tool="${tool#asdf-test-}"
+
+version="${ASDF_INSTALL_VERSION:-$2}"
+path="${ASDF_INSTALL_PATH:-$3}"
+
+# shellcheck disable=SC1091
 source "${plugin_dir}/lib/utils.bash"
 
-install_version "$tool" "$ASDF_INSTALL_VERSION" "$ASDF_INSTALL_PATH"
+install_version "$tool" "$version" "$path"

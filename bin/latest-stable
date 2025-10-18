@@ -12,4 +12,4 @@ tool="${tool#asdf-test-}"
 # shellcheck disable=SC1091
 source "${plugin_dir}/lib/utils.bash"
 
-list_all_versions "$tool" | awk '{print $2}' | tr '\n' ' '
+list_all_versions "$tool" | grep 'recommended' | awk '{print $2}'
