@@ -1,6 +1,7 @@
 # asdf-ghcup
 
-[![build](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml)
+[![Build](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml)
+[![Release](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml)
 
 An asdf plugin for managing Haskell tools based on
 [GHCup](https://www.haskell.org/ghcup/).
