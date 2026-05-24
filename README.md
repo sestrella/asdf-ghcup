@@ -3,46 +3,61 @@
 [![build](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/build.yml)
 [![release](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml/badge.svg)](https://github.com/sestrella/asdf-ghcup/actions/workflows/release.yml)
 
-An asdf plugin for managing Haskell tools based on
-[GHCup](https://www.haskell.org/ghcup/).
+An [asdf](https://github.com/asdf-vm/asdf) plugin for managing Haskell tools based on [GHCup](https://www.haskell.org/ghcup/). Simplify version management of Haskell toolchain components.
+
+## Supported Tools
+
+- [ghc](https://www.haskell.org/ghc) - The Glasgow Haskell Compiler
+- [cabal](https://www.haskell.org/cabal) - The Haskell package and project build tool
+- [stack](https://docs.haskellstack.org/en/stable/) - Cross-platform program for developing Haskell projects
+- [hls](https://github.com/haskell/haskell-language-server) - Language Server Protocol implementation for Haskell
 
 ## Requirements
 
-- Install [asdf](https://github.com/asdf-vm/asdf)
-- Install GHCup [system requirements](https://www.haskell.org/ghcup/install/#system-requirements)
+- [asdf](https://github.com/asdf-vm/asdf) - version manager framework
+- GHCup [system requirements](https://www.haskell.org/ghcup/install/#system-requirements)
 
-## Getting Started
+## Installation
 
-The following Haskell tools are supported by this plugin:
+### Add the plugin
 
-- [cabal](https://www.haskell.org/cabal)
-- [ghc](https://www.haskell.org/ghc)
-- [hls](https://github.com/haskell/haskell-language-server)
-- [stack](https://docs.haskellstack.org/en/stable/)
-
-Run the following command replacing `<tool>` with one of the tools listed
-above:
+Replace `<tool>` with any of the supported tools above:
 
 ```sh
 asdf plugin add <tool>
 ```
 
+**Examples:**
+
+```sh
+asdf plugin add ghc
+asdf plugin add cabal
+asdf plugin add stack
+asdf plugin add hls
+```
+
 ## Usage
 
-After one of the supported tools has been added, you can run the following
-commands:
-
-**List all available versions:**
+### List available versions
 
 ```sh
 asdf list all <tool>
 ```
 
-**Install a specific version:**
+### Install a specific version
 
 ```sh
 asdf install <tool> <version>
 ```
+
+### Set global or local version
+
+```sh
+asdf global <tool> <version>
+asdf local <tool> <version>
+```
+
+For more information on asdf commands, see the [asdf documentation](https://asdf-vm.com/guide/getting-started.html).
 
 ## Credits
 
