@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - "v*.*.*"
+
+
+concurrency:
+  group: release
+  cancel-in-progress: true
+
 jobs:
   release:
     runs-on: ubuntu-latest
